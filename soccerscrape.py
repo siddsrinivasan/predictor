@@ -4,7 +4,7 @@ import datetime
 
 
 
-get_upcoming():
+def get_upcoming():
 	#Get the new upcoming matches:
 
 	url = 'https://projects.fivethirtyeight.com/soccer-predictions/premier-league/'
@@ -24,11 +24,21 @@ get_upcoming():
 			upcoming = None
 	# Currently it only grabs the pairs for the next month (so January)
 
-get_results():
-	# Results:
-	url = 'https://www.premierleague.com/results'
-	response = requests.get(url)
-	soup = BeautifulSoup(response.content, 'html.parser')
+def get_results():
+    # Results:
+    # These code snippets use an open-source library. http://unirest.io/python
+    url = 'https://www.flashscores.co.uk/football/england/premier-league/results/'
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    results = []
+    team = soup.find('span',class_="teamName")
+    print team
+    while (team != None):
+        try: 
+            team1 = team.i.get_text
+        except:
+            a = 2
+    a = 3
 
 
 class Team(object):
@@ -58,7 +68,7 @@ def make_team(name,position,wins,ties,losses):
     return team
 
 
-get_results
+get_results()
 
 
 
